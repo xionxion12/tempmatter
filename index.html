@@ -227,34 +227,17 @@
       display: block;
     }
 
-    .plate {
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .flyer-container {
-      border: 1px solid var(--ink);
-      background: #e6e6e2;
-      padding: clamp(1rem, 3vw, 2.5rem);
-      display: flex;
-      align-items: center;
+    .flyer-cell {
       justify-content: center;
+      align-items: center;
     }
 
     .flyer {
       display: block;
       width: 100%;
-      max-width: 500px;
+      max-width: 480px;
       height: auto;
       border: 1px solid var(--ink);
-      box-shadow: 4px 4px 0px var(--ink);
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    
-    .flyer-container:hover .flyer {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0px var(--ink);
     }
 
     .plate figcaption {
@@ -405,12 +388,8 @@
     <!-- Exhibition Block -->
     <main class="row row-2col">
       <!-- Left pane: Flyer -->
-      <section class="cell cell-left">
-        <figure class="plate">
-          <div class="flyer-container">
-            <img class="flyer" src="flyer.jpg" alt="Flyer for Dot Als - Influx exhibition" />
-          </div>
-        </figure>
+      <section class="cell cell-left flyer-cell">
+        <img class="flyer" src="flyer.jpg" alt="Flyer for Dot Als - Influx exhibition" />
       </section>
 
       <!-- Right pane: Specs -->
