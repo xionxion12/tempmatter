@@ -4,171 +4,360 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Temporary Matter</title>
-  <meta name="description" content="Temporary Matter — an artist-run space." />
+  <meta name="description" content="Temporary Matter — an artist-run space for transient, time-based, and temporary works." />
+
+  <meta property="og:title" content="Temporary Matter" />
+  <meta property="og:description" content="An artist-run space for transient, time-based, and temporary works." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://temporarymatter.com" />
+  <meta property="og:image" content="https://temporarymatter.com/flyer.jpg" />
+  <meta name="theme-color" content="#ffffff" />
+
   <style>
-    /* Office Code Pro — Nathan Rutzky, SIL Open Font License 1.1 (via open-foundry.com) */
+    /* Liberation Sans — Red Hat / Steve Matteson (Ascender), SIL OFL 1.1.
+       Subset to Latin + punctuation/arrows used on this page. */
     @font-face {
-      font-family: "Office Code Pro";
+      font-family: "Liberation Sans";
       font-weight: 400;
       font-style: normal;
       font-display: swap;
-      src: url("fonts/OfficeCodePro-Regular.woff2") format("woff2"),
-           url("fonts/OfficeCodePro-Regular.woff") format("woff");
+      src: url("fonts/LiberationSans-Regular.woff2") format("woff2"),
+           url("fonts/LiberationSans-Regular.woff") format("woff");
     }
     @font-face {
-      font-family: "Office Code Pro";
+      font-family: "Liberation Sans";
       font-weight: 700;
       font-style: normal;
       font-display: swap;
-      src: url("fonts/OfficeCodePro-Bold.woff2") format("woff2"),
-           url("fonts/OfficeCodePro-Bold.woff") format("woff");
+      src: url("fonts/LiberationSans-Bold.woff2") format("woff2"),
+           url("fonts/LiberationSans-Bold.woff") format("woff");
+    }
+
+    /* M+ M Type-1 (M+ 1m) — The M+ FONTS PROJECT, free license (via open-foundry.com).
+       Subset to Latin + punctuation/arrows used on this page. */
+    @font-face {
+      font-family: "MPlus M Type-1";
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+      src: url("fonts/MplusMType1-Regular.woff2") format("woff2"),
+           url("fonts/MplusMType1-Regular.woff") format("woff");
+    }
+    @font-face {
+      font-family: "MPlus M Type-1";
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+      src: url("fonts/MplusMType1-Medium.woff2") format("woff2"),
+           url("fonts/MplusMType1-Medium.woff") format("woff");
+    }
+    @font-face {
+      font-family: "MPlus M Type-1";
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+      src: url("fonts/MplusMType1-Bold.woff2") format("woff2"),
+           url("fonts/MplusMType1-Bold.woff") format("woff");
     }
 
     :root {
-      --line: #111;
-      --bg: #fff;
-      --muted: #555;
-      --space: clamp(1.5rem, 4vw, 3rem);
-      --mono: "Office Code Pro", "Courier New", Courier, monospace;
+      --ink: #0a0a0a;
+      --paper: #ffffff;
+      --muted: #6a6a6a;
+      --hair: #d8d8d4;
+      --mono: "MPlus M Type-1", ui-monospace, "SFMono-Regular", Menlo, "Courier New", monospace;
+      --display: "Liberation Sans", Helvetica, Arial, system-ui, sans-serif;
+
+      /* page margins */
+      --mx: clamp(1.25rem, 5vw, 4.5rem);
+      --my: clamp(1.25rem, 4vw, 2.75rem);
+
+      /* vertical rhythm between blocks */
+      --gap: clamp(3.5rem, 9vw, 8rem);
     }
 
     * { box-sizing: border-box; }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: var(--bg);
-      color: var(--line);
-      font-family: var(--mono);
-      font-size: 16px;
-      line-height: 1.5;
-    }
+    html { -webkit-text-size-adjust: 100%; }
 
     body {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: var(--space);
-    }
-
-    header {
-      border: 1px solid var(--line);
-      padding: var(--space);
-      text-align: center;
-      margin-bottom: var(--space);
-    }
-
-    h1 {
       margin: 0;
-      font-size: clamp(1.8rem, 6vw, 3rem);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: clamp(13px, 1.05vw, 15px);
+      line-height: 1.55;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      padding: var(--my) var(--mx) calc(var(--my) + 1rem);
+    }
+
+    a { color: inherit; }
+
+    ::selection { background: var(--ink); color: var(--paper); }
+
+    /* Gallery frame — a hairline inset border, like a hung work */
+    .frame {
+      position: fixed;
+      inset: clamp(0.6rem, 1.4vw, 1.1rem);
+      border: 1px solid var(--ink);
+      pointer-events: none;
+      z-index: 1000;
+    }
+    @media (max-width: 640px) { .frame { display: none; } }
+
+    .wrap { max-width: 1340px; margin: 0 auto; }
+
+    /* ───────── Wordmark ───────── */
+    .hero { margin: clamp(1rem, 4vw, 3rem) 0 0; }
+
+    .wordmark {
+      margin: 0;
+      font-family: var(--display);
       font-weight: 700;
-    }
-
-    .tagline {
-      margin: 1rem 0 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    section {
-      margin-bottom: var(--space);
-    }
-
-    .label {
+      line-height: 0.92;
+      letter-spacing: -0.035em;
+      font-size: clamp(2.9rem, 14vw, 12rem);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-bottom: 0.75rem;
+    }
+    .wordmark span { display: block; }
+
+    .lede {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+      margin-top: clamp(1.75rem, 4vw, 2.75rem);
+    }
+    .lede p {
+      grid-column: 6 / 13;
+      margin: 0;
+      font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+      max-width: 40ch;
+    }
+    @media (max-width: 760px) {
+      .lede p { grid-column: 1 / 13; max-width: none; }
     }
 
-    /* Flyer */
+    /* ───────── Section scaffolding ───────── */
+    section { margin-top: var(--gap); }
+
+    .sec-head {
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--ink);
+      margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    }
+    .sec-title {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(1.05rem, 2.5vw, 1.8rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    /* ───────── Exhibition: flyer + spec sheet ───────── */
+    .exhibition {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: clamp(1.5rem, 4vw, 3.5rem);
+      align-items: start;
+    }
+
+    .plate { grid-column: 1 / 7; }
     .flyer {
-      border: 1px solid var(--line);
+      display: block;
       width: 100%;
       height: auto;
-      display: block;
-      background: #fafafa;
+      border: 1px solid var(--ink);
+      background: #f4f4f1;
     }
-
-    .exhibition-info {
-      margin-top: 0.75rem;
-      font-size: 0.9rem;
-    }
-
-    .exhibition-info strong {
-      display: block;
-      font-size: 1.05rem;
-      letter-spacing: 0.03em;
-    }
-
-    .exhibition-info span {
-      color: var(--muted);
-    }
-
-    /* Links */
-    .links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .links a {
-      flex: 1 1 auto;
-      min-width: 140px;
-      text-align: center;
-      border: 1px solid var(--line);
-      padding: 1rem;
-      text-decoration: none;
-      color: var(--line);
+    .plate figcaption {
+      margin: 0.75rem 0 0;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.85rem;
-      transition: background 0.15s, color 0.15s;
-    }
-
-    .links a:hover,
-    .links a:focus {
-      background: var(--line);
-      color: var(--bg);
-    }
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding-top: 1rem;
-      text-align: center;
-      font-size: 0.75rem;
       color: var(--muted);
-      letter-spacing: 0.05em;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .spec { grid-column: 7 / 13; }
+
+    .spec h3 {
+      margin: 0 0 1.5rem;
+      font-family: var(--display);
+      font-size: clamp(1.7rem, 4.4vw, 2.9rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+    }
+    .spec h3 em {
+      font-style: normal;
+      display: block;
+      font-family: var(--mono);
+      color: var(--muted);
+      font-weight: 400;
+      font-size: 0.34em;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-top: 0.7rem;
+    }
+
+    dl.meta { margin: 0; }
+    dl.meta > div {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      gap: 1rem;
+      padding: 0.7rem 0;
+      border-top: 1px solid var(--hair);
+    }
+    dl.meta > div:last-child { border-bottom: 1px solid var(--hair); }
+    dl.meta dt {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 0.15em;
+    }
+    dl.meta dd {
+      margin: 0;
+      font-size: 0.92rem;
+      letter-spacing: -0.005em;
+    }
+    dl.meta dd small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-top: 0.15rem;
+    }
+
+    @media (max-width: 860px) {
+      .plate, .spec { grid-column: 1 / 13; }
+      .plate { max-width: 26rem; }
+    }
+    @media (max-width: 420px) {
+      dl.meta > div { grid-template-columns: 1fr; gap: 0.2rem; }
+    }
+
+    /* ───────── Contact / index list ───────── */
+    .index a {
+      display: grid;
+      grid-template-columns: 2.2rem 1fr auto;
+      align-items: baseline;
+      gap: 1rem;
+      padding: clamp(1rem, 2.4vw, 1.6rem) 0;
+      border-top: 1px solid var(--hair);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: padding-left 0.25s ease, background 0.2s ease, color 0.2s ease;
+    }
+    .index a:last-child { border-bottom: 1px solid var(--hair); }
+    .index .ix-num {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+    .index .ix-label {
+      font-family: var(--display);
+      font-size: clamp(1.5rem, 4.8vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .index .ix-meta {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+      transition: transform 0.25s ease, color 0.2s ease;
+    }
+    @media (hover: hover) {
+      .index a:hover { background: var(--ink); color: var(--paper); padding-left: 1rem; }
+      .index a:hover .ix-num,
+      .index a:hover .ix-meta { color: var(--paper); }
+      .index a:hover .ix-meta { transform: translateX(-0.4rem); }
+    }
+    .index a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+    @media (max-width: 520px) {
+      .index a { grid-template-columns: 1.6rem 1fr; row-gap: 0.3rem; }
+      .index .ix-meta { grid-column: 1 / 3; padding-left: calc(1.6rem + 1rem); }
+    }
+
+    /* ───────── Colophon ───────── */
+    footer {
+      margin-top: var(--gap);
+      padding-top: 1rem;
+      border-top: 1px solid var(--ink);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Temporary Matter</h1>
-    <p class="tagline">An artist-run space for transient, time-based, and temporary works.</p>
-  </header>
+  <div class="frame" aria-hidden="true"></div>
 
-  <section>
-    <p class="label">Upcoming Exhibition</p>
-    <img class="flyer" src="flyer.jpg" alt="Flyer for the upcoming exhibition" />
-    <div class="exhibition-info">
-      <strong>Placeholder Title</strong>
-      <span>Artist Name &middot; Opening 00 Month 2026, 18:00 &middot; On view through 00 Month 2026</span>
+  <div class="wrap">
+    <!-- Wordmark -->
+    <div class="hero">
+      <h1 class="wordmark"><span>Temporary</span><span>Matter</span></h1>
+      <div class="lede">
+        <p>An artist-run space for transient, time-based, and temporary works — exhibitions that exist only for the duration they are shown.</p>
+      </div>
     </div>
-  </section>
 
-  <section>
-    <p class="label">Find Us</p>
-    <div class="links">
-      <a href="https://instagram.com/temporarymatter" target="_blank" rel="noopener">Instagram</a>
-      <a href="mailto:hello@temporarymatter.com">Email</a>
-    </div>
-  </section>
+    <!-- Current exhibition -->
+    <section aria-labelledby="exh">
+      <div class="sec-head">
+        <h2 class="sec-title" id="exh">Next exhibition</h2>
+      </div>
 
-  <footer>
-    Temporary Matter &middot; temporarymatter.com
-  </footer>
+      <div class="exhibition">
+        <figure class="plate">
+          <img class="flyer" src="flyer.jpg" alt="Flyer for the current exhibition at Temporary Matter" />
+          <figcaption><span>Exhibition flyer</span><span>4:5</span></figcaption>
+        </figure>
+
+        <div class="spec">
+          <h3>Influx<em>Dot Als</em></h3>
+          <dl class="meta">
+            <div><dt>Artist</dt><dd>Dot Als</dd></div>
+            <div><dt>On view</dt><dd>12 — 14 June 2026</dd></div>
+            <div><dt>Hours</dt><dd>1 — 6pm daily</dd></div>
+            <div><dt>Address</dt><dd>Unit 12, 230 Dalston Lane<small>London E8 1LA</small></dd></div>
+            <div><dt>Admission</dt><dd>Free</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section aria-labelledby="contact">
+      <div class="sec-head">
+        <h2 class="sec-title" id="contact">Find us</h2>
+      </div>
+
+      <nav class="index">
+        <a href="https://instagram.com/temporary.matter.gallery" target="_blank" rel="noopener">
+          <span class="ix-num">A</span>
+          <span class="ix-label">Instagram</span>
+          <span class="ix-meta">@temporary.matter.gallery&nbsp;↗</span>
+        </a>
+        <a href="mailto:temporarymattergallery@gmail.com">
+          <span class="ix-num">B</span>
+          <span class="ix-label">Email</span>
+          <span class="ix-meta">temporarymattergallery@gmail.com&nbsp;↗</span>
+        </a>
+      </nav>
+    </section>
+
+    <!-- Colophon -->
+    <footer>Temporary Matter — © 2026</footer>
+  </div>
 </body>
 </html>
