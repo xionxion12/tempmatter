@@ -147,7 +147,6 @@
     .masthead-info {
       font-size: 0.72rem;
       letter-spacing: 0.08em;
-      text-transform: uppercase;
       display: flex;
       flex-direction: column;
       gap: 1rem;
@@ -226,7 +225,6 @@
       font-weight: 400;
       font-size: clamp(0.95rem, 1.8vw, 1.25rem);
       letter-spacing: 0.02em;
-      text-transform: uppercase;
       margin-top: 0.4rem;
       display: block;
     }
@@ -287,7 +285,6 @@
       font-size: 0.85rem;
       letter-spacing: -0.01em;
       font-weight: 700;
-      text-transform: uppercase;
     }
     
     dl.meta-list dd small {
@@ -347,7 +344,6 @@
       padding: 1.5rem clamp(1.25rem, 3.5vw, 2.5rem);
       font-size: 0.65rem;
       letter-spacing: 0.12em;
-      text-transform: uppercase;
       color: var(--muted);
       display: flex;
       flex-wrap: wrap;
@@ -380,7 +376,7 @@
           <span class="label">Status</span>
           <span class="status-badge">
             <span class="status-dot" id="status-dot"></span>
-            <span id="status-text">RETRIEVING STATUS</span>
+            <span id="status-text">Retrieving Status</span>
           </span>
           <span class="status-next" id="status-next"></span>
         </div>
@@ -498,25 +494,25 @@
         let nextOpenStr = '';
         if (!isOpen) {
           if (year < 2026 || (year === 2026 && (month < 6 || (month === 6 && (day < 12 || (day === 12 && hour < 13)))))) {
-            nextOpenStr = 'NEXT: 12 JUNE 2026 // 13:00 BST';
+            nextOpenStr = 'Next: 12 June 2026 // 13:00 BST';
           } else if (year === 2026 && month === 6 && ((day === 12 && hour >= 18) || (day === 13 && hour < 13))) {
-            nextOpenStr = 'NEXT: 13 JUNE 2026 // 13:00 BST';
+            nextOpenStr = 'Next: 13 June 2026 // 13:00 BST';
           } else if (year === 2026 && month === 6 && ((day === 13 && hour >= 18) || (day === 14 && hour < 13))) {
-            nextOpenStr = 'NEXT: 14 JUNE 2026 // 13:00 BST';
+            nextOpenStr = 'Next: 14 June 2026 // 13:00 BST';
           } else {
-            nextOpenStr = 'EXHIBITION CONCLUDED';
+            nextOpenStr = 'Exhibition Concluded';
           }
         }
         
         if (statusDot && statusText && statusNext) {
           if (isOpen) {
             statusDot.classList.add('active');
-            statusText.textContent = 'ACTIVE / ON VIEW NOW';
+            statusText.textContent = 'Active / On View Now';
             statusNext.textContent = '';
             statusNext.style.display = 'none';
           } else {
             statusDot.classList.remove('active');
-            statusText.textContent = 'INACTIVE / CLOSED';
+            statusText.textContent = 'Inactive / Closed';
             statusNext.textContent = nextOpenStr;
             statusNext.style.display = 'block';
           }
