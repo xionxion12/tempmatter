@@ -14,6 +14,7 @@
   <meta name="theme-color" content="#ffffff" />
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;700;900&display=swap');
 
 
     /* M+ M Type-1 (M+ 1m) — The M+ FONTS PROJECT, free license (via open-foundry.com).
@@ -45,13 +46,13 @@
 
     :root {
       --ink: #070708;
-      --paper: #f4f4f3;
+      --paper: #ffffff;
       --muted: #747472;
       --hair: #070708;
       --accent: #ff3b30;
       
       --mono: "MPlus M Type-1", ui-monospace, "SFMono-Regular", Menlo, "Courier New", monospace;
-      --display: "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --display: "Archivo", Helvetica, Arial, sans-serif;
     }
 
     * { box-sizing: border-box; }
@@ -89,9 +90,7 @@
       border-bottom: 1px solid var(--ink);
     }
     
-    .row-2col {
-      background: #e2e2df;
-    }
+
 
     @media (min-width: 860px) {
       .row-2col {
@@ -242,6 +241,7 @@
       width: 100%;
       max-width: 480px;
       height: auto;
+      border: 1px solid #e0e0d8;
     }
 
     .plate figcaption {
@@ -343,6 +343,27 @@
       line-height: 1;
     }
 
+    .link-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+
+    .contact-link .link-label {
+      font-family: var(--display);
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.1s steps(2);
+    }
+
+    .contact-link:hover .link-label {
+      color: var(--paper);
+    }
+
     /* --- Footer --- */
     footer {
       padding: 1.5rem clamp(1.25rem, 3.5vw, 2.5rem);
@@ -426,14 +447,19 @@
       </section>
     </main>
 
-    <!-- Contact Block -->
     <nav class="contact-row" aria-label="Contact Index">
       <a class="contact-link contact-link-left" href="https://instagram.com/temporary.matter.gallery" target="_blank" rel="noopener">
-        <span>Instagram / @temporary.matter.gallery</span>
+        <span class="link-content">
+          <span class="link-label">Instagram</span>
+          <span class="link-value">@temporary.matter.gallery</span>
+        </span>
         <span class="arrow">↗</span>
       </a>
       <a class="contact-link" href="mailto:temporarymattergallery@gmail.com">
-        <span>Email / temporarymattergallery@gmail.com</span>
+        <span class="link-content">
+          <span class="link-label">Email</span>
+          <span class="link-value">temporarymattergallery@gmail.com</span>
+        </span>
         <span class="arrow">↗</span>
       </a>
     </nav>
