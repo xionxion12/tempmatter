@@ -14,24 +14,7 @@
   <meta name="theme-color" content="#ffffff" />
 
   <style>
-    /* Liberation Sans — Red Hat / Steve Matteson (Ascender), SIL OFL 1.1.
-       Subset to Latin + punctuation/arrows used on this page. */
-    @font-face {
-      font-family: "Liberation Sans";
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-      src: url("fonts/LiberationSans-Regular.woff2") format("woff2"),
-           url("fonts/LiberationSans-Regular.woff") format("woff");
-    }
-    @font-face {
-      font-family: "Liberation Sans";
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-      src: url("fonts/LiberationSans-Bold.woff2") format("woff2"),
-           url("fonts/LiberationSans-Bold.woff") format("woff");
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
 
     /* M+ M Type-1 (M+ 1m) — The M+ FONTS PROJECT, free license (via open-foundry.com).
        Subset to Latin + punctuation/arrows used on this page. */
@@ -68,7 +51,7 @@
       --accent: #ff3b30;
       
       --mono: "MPlus M Type-1", ui-monospace, "SFMono-Regular", Menlo, "Courier New", monospace;
-      --display: "Liberation Sans", Helvetica, Arial, system-ui, sans-serif;
+      --display: "Inter", Helvetica, Arial, system-ui, sans-serif;
     }
 
     * { box-sizing: border-box; }
