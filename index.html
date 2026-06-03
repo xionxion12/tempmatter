@@ -111,8 +111,16 @@
         grid-template-columns: 1.2fr 0.8fr;
       }
       .row-header {
-        grid-template-columns: 1.5fr 1fr;
+        grid-template-columns: 1.2fr 1fr 0.8fr;
       }
+    }
+
+    .about-text {
+      margin: 0.5rem 0 0;
+      font-size: 0.82rem;
+      line-height: 1.55;
+      font-weight: 500;
+      max-width: 32ch;
     }
 
     .cell {
@@ -158,11 +166,13 @@
       gap: 1rem;
     }
 
-    .masthead-info .label {
+    .label {
       color: var(--muted);
       font-size: 0.65rem;
       margin-bottom: 0.15rem;
       display: block;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .masthead-info .value {
@@ -384,6 +394,10 @@
     <header class="row row-header">
       <div class="wordmark-container cell-left">
         <h1 class="wordmark"><span>Temporary</span><span>Matter</span></h1>
+      </div>
+      <div class="cell cell-left">
+        <span class="label">Program</span>
+        <p class="about-text">Temporary Matter is an artist-run space based in Dalston, London.</p>
       </div>
       <div class="cell masthead-info">
         <div>
