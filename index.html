@@ -61,253 +61,493 @@
     }
 
     :root {
-      --ink: #0a0a0a;
-      --paper: #ffffff;
-      --muted: #6a6a6a;
-      --hair: #d8d8d4;
+      --ink: #070708;
+      --paper: #f4f4f3;
+      --muted: #747472;
+      --hair: #070708;
+      --accent: #ff3b30;
+      
       --mono: "MPlus M Type-1", ui-monospace, "SFMono-Regular", Menlo, "Courier New", monospace;
       --display: "Liberation Sans", Helvetica, Arial, system-ui, sans-serif;
-
-      /* page margins */
-      --mx: clamp(1.25rem, 5vw, 4.5rem);
-      --my: clamp(1.25rem, 4vw, 2.75rem);
-
-      /* vertical rhythm between blocks */
-      --gap: clamp(3.5rem, 9vw, 8rem);
     }
 
     * { box-sizing: border-box; }
-
-    html { -webkit-text-size-adjust: 100%; }
+    html { -webkit-text-size-adjust: 100%; background: var(--paper); }
 
     body {
       margin: 0;
       background: var(--paper);
       color: var(--ink);
       font-family: var(--mono);
-      font-size: clamp(13px, 1.05vw, 15px);
-      line-height: 1.55;
+      font-size: clamp(12px, 0.95vw, 14px);
+      line-height: 1.45;
       font-weight: 400;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-      padding: var(--my) var(--mx) calc(var(--my) + 1rem);
+      padding: clamp(1rem, 4vw, 3rem);
     }
 
-    a { color: inherit; }
+    a { text-decoration: none; color: inherit; }
 
     ::selection { background: var(--ink); color: var(--paper); }
 
-    .wrap { max-width: 1340px; margin: 0 auto; }
+    .wrap {
+      max-width: 1300px;
+      margin: 0 auto;
+      border: 1px solid var(--ink);
+      display: grid;
+      grid-template-columns: 1fr;
+    }
 
-    /* ───────── Wordmark ───────── */
-    .hero { margin: clamp(1rem, 4vw, 3rem) 0 0; }
+    /* Grid layout */
+    .row {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    
+    @media (min-width: 860px) {
+      .row-2col {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+      .row-header {
+        grid-template-columns: 1.5fr 1fr;
+      }
+    }
+
+    .cell {
+      padding: clamp(1.25rem, 3.5vw, 2.5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .cell-left {
+      border-bottom: 1px solid var(--ink);
+    }
+
+    @media (min-width: 860px) {
+      .cell-left {
+        border-right: 1px solid var(--ink);
+        border-bottom: none;
+      }
+    }
+
+    /* --- Header / Masthead --- */
+    .wordmark-container {
+      padding: clamp(1.25rem, 3.5vw, 2.5rem);
+    }
 
     .wordmark {
       margin: 0;
       font-family: var(--display);
       font-weight: 700;
-      line-height: 0.92;
-      letter-spacing: -0.035em;
-      font-size: clamp(2.9rem, 9.8vw, 8.4rem);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      font-size: clamp(2.8rem, 8.2vw, 6.2rem);
       text-transform: uppercase;
     }
     .wordmark span { display: block; }
 
-    .lede {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
+    .masthead-info {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
       gap: 1rem;
-      margin-top: clamp(1.75rem, 4vw, 2.75rem);
-    }
-    .lede p {
-      grid-column: 6 / 13;
-      margin: 0;
-      font-size: clamp(0.95rem, 1.6vw, 1.2rem);
-      line-height: 1.5;
-      letter-spacing: -0.01em;
-      max-width: 40ch;
-    }
-    @media (max-width: 760px) {
-      .lede p { grid-column: 1 / 13; max-width: none; }
     }
 
-    /* ───────── Section scaffolding ───────── */
-    section { margin-top: var(--gap); }
-
-    .sec-head {
-      padding-bottom: 0.85rem;
-      border-bottom: 1px solid var(--ink);
-      margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    .masthead-info .label {
+      color: var(--muted);
+      font-size: 0.65rem;
+      margin-bottom: 0.15rem;
+      display: block;
     }
-    .sec-title {
-      margin: 0;
-      font-family: var(--display);
-      font-size: clamp(1.05rem, 2.5vw, 1.8rem);
+
+    .masthead-info .value {
       font-weight: 700;
-      letter-spacing: -0.01em;
     }
 
-    /* ───────── Exhibition: flyer + spec sheet ───────── */
-    .exhibition {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: clamp(1.5rem, 4vw, 3.5rem);
-      align-items: start;
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
     }
 
-    .plate { grid-column: 1 / 7; }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--muted);
+      display: inline-block;
+    }
+
+    .status-dot.active {
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    .status-next {
+      display: block;
+      font-size: 0.65rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    /* --- Exhibition layout --- */
+    .exhibition-title-cell {
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .sec-title-mini {
+      margin: 0;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .exhibition-title {
+      margin: 0.85rem 0 0;
+      font-family: var(--display);
+      font-size: clamp(2rem, 4.8vw, 3.5rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .exhibition-artist {
+      font-family: var(--mono);
+      font-style: normal;
+      color: var(--muted);
+      font-weight: 400;
+      font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+      display: block;
+    }
+
+    .plate {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .flyer-container {
+      border: 1px solid var(--ink);
+      background: #e6e6e2;
+      padding: clamp(1rem, 3vw, 2.5rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .flyer {
       display: block;
       width: 100%;
+      max-width: 500px;
       height: auto;
       border: 1px solid var(--ink);
-      background: #f4f4f1;
+      box-shadow: 4px 4px 0px var(--ink);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
+    
+    .flyer-container:hover .flyer {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px var(--ink);
+    }
+
     .plate figcaption {
       margin: 0.75rem 0 0;
-      font-size: 0.7rem;
-      letter-spacing: 0.06em;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
       display: flex;
       justify-content: space-between;
-      gap: 1rem;
     }
 
-    .spec { grid-column: 7 / 13; }
-
-    .spec h3 {
-      margin: 0 0 1.5rem;
-      font-family: var(--display);
-      font-size: clamp(1.7rem, 4.4vw, 2.9rem);
-      font-weight: 700;
-      line-height: 1.0;
-      letter-spacing: -0.01em;
+    /* Meta receipt table */
+    dl.meta-list {
+      margin: 1.5rem 0 0;
+      padding: 0;
+      border-top: 1px solid var(--ink);
     }
-    .spec h3 em {
-      font-style: normal;
-      display: block;
-      font-family: var(--mono);
-      color: var(--muted);
-      font-weight: 400;
-      font-size: 0.34em;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-top: 0.7rem;
-    }
-
-    dl.meta { margin: 0; }
-    dl.meta > div {
+    
+    dl.meta-list > div {
       display: grid;
-      grid-template-columns: 7.5rem 1fr;
-      gap: 1rem;
-      padding: 0.7rem 0;
-      border-top: 1px solid var(--hair);
+      grid-template-columns: 1fr;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--ink);
     }
-    dl.meta > div:last-child { border-bottom: 1px solid var(--hair); }
-    dl.meta dt {
-      font-size: 0.68rem;
+    
+    @media (min-width: 480px) {
+      dl.meta-list > div {
+        grid-template-columns: 8rem 1fr;
+        gap: 1.5rem;
+      }
+    }
+    
+    dl.meta-list dt {
+      font-size: 0.65rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted);
-      padding-top: 0.15em;
+      font-weight: 500;
     }
-    dl.meta dd {
+    
+    dl.meta-list dd {
       margin: 0;
-      font-size: 0.92rem;
-      letter-spacing: -0.005em;
+      font-size: 0.85rem;
+      letter-spacing: -0.01em;
+      font-weight: 700;
+      text-transform: uppercase;
     }
-    dl.meta dd small {
+    
+    dl.meta-list dd small {
       display: block;
       color: var(--muted);
-      font-size: 0.8rem;
-      margin-top: 0.15rem;
+      font-size: 0.76rem;
+      margin-top: 0.2rem;
     }
 
-    @media (max-width: 860px) {
-      .plate, .spec { grid-column: 1 / 13; }
-      .plate { max-width: 26rem; }
+    /* --- Contact list --- */
+    .contact-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-bottom: 1px solid var(--ink);
     }
-    @media (max-width: 420px) {
-      dl.meta > div { grid-template-columns: 1fr; gap: 0.2rem; }
+    
+    @media (min-width: 860px) {
+      .contact-row {
+        grid-template-columns: 1fr 1fr;
+      }
     }
-
-    /* ───────── Contact ───────── */
-    .contact {
+    
+    .contact-link {
       display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-      align-items: flex-start;
-      font-size: clamp(0.95rem, 1.6vw, 1.2rem);
-      letter-spacing: -0.01em;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem clamp(1.25rem, 3.5vw, 2.5rem);
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 700;
+      transition: background 0.1s steps(2), color 0.1s steps(2);
     }
-    .contact a {
-      text-decoration: none;
-      border-bottom: 1px solid var(--hair);
-      padding-bottom: 0.1rem;
-      transition: border-color 0.2s ease;
-    }
-    .contact a:hover,
-    .contact a:focus-visible { border-color: var(--ink); outline: none; }
-    .contact a .arrow { color: var(--muted); }
 
-    /* ───────── Colophon ───────── */
+    .contact-link-left {
+      border-bottom: 1px solid var(--ink);
+    }
+
+    @media (min-width: 860px) {
+      .contact-link-left {
+        border-right: 1px solid var(--ink);
+        border-bottom: none;
+      }
+    }
+    
+    .contact-link:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    
+    .contact-link .arrow {
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    /* --- Footer --- */
     footer {
-      margin-top: var(--gap);
-      padding-top: 1rem;
-      border-top: 1px solid var(--ink);
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
+      padding: 1.5rem clamp(1.25rem, 3.5vw, 2.5rem);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <!-- Wordmark -->
-    <div class="hero">
-      <h1 class="wordmark"><span>Temporary</span><span>Matter</span></h1>
-      <div class="lede">
-        <p>Temporary Matter is an artist-run space based in Dalston Lane, London.</p>
+    <!-- Header Block -->
+    <header class="row row-header">
+      <div class="wordmark-container cell-left">
+        <h1 class="wordmark"><span>Temporary</span><span>Matter</span></h1>
       </div>
-    </div>
-
-    <!-- Current exhibition -->
-    <section aria-labelledby="exh">
-      <div class="sec-head">
-        <h2 class="sec-title" id="exh">Next exhibition</h2>
-      </div>
-
-      <div class="exhibition">
-        <figure class="plate">
-          <img class="flyer" src="flyer.jpg" alt="Flyer for the current exhibition at Temporary Matter" />
-          <figcaption><span>Exhibition flyer</span><span>4:5</span></figcaption>
-        </figure>
-
-        <div class="spec">
-          <h3>Influx<em>Dot Als</em></h3>
-          <dl class="meta">
-            <div><dt>Artist</dt><dd>Dot Als</dd></div>
-            <div><dt>On view</dt><dd>12 — 14 June 2026</dd></div>
-            <div><dt>Hours</dt><dd>1 — 6pm daily</dd></div>
-            <div><dt>Address</dt><dd>Unit 12, 230 Dalston Lane<small>London E8 1LA</small></dd></div>
-            <div><dt>Admission</dt><dd>Free</dd></div>
-          </dl>
+      <div class="cell masthead-info">
+        <div>
+          <span class="label">Location</span>
+          <span class="value">Unit 12, 230 Dalston Lane, London E8 1LA</span>
+        </div>
+        <div>
+          <span class="label">Local Time</span>
+          <span class="value" id="london-clock">00:00:00 GMT+1</span>
+        </div>
+        <div>
+          <span class="label">Status</span>
+          <span class="status-badge">
+            <span class="status-dot" id="status-dot"></span>
+            <span id="status-text">RETRIEVING STATUS</span>
+          </span>
+          <span class="status-next" id="status-next"></span>
         </div>
       </div>
-    </section>
+    </header>
 
-    <!-- Contact -->
-    <section aria-label="Contact">
-      <nav class="contact">
-        <a href="https://instagram.com/temporary.matter.gallery" target="_blank" rel="noopener">Instagram, @temporary.matter.gallery <span class="arrow">↗</span></a>
-        <a href="mailto:temporarymattergallery@gmail.com">Email, temporarymattergallery@gmail.com <span class="arrow">↗</span></a>
-      </nav>
-    </section>
+    <!-- Exhibition Block -->
+    <main class="row row-2col">
+      <!-- Left pane: Flyer -->
+      <section class="cell cell-left">
+        <figure class="plate">
+          <div class="flyer-container">
+            <img class="flyer" src="flyer.jpg" alt="Flyer for Dot Als - Influx exhibition" />
+          </div>
+        </figure>
+      </section>
 
-    <!-- Colophon -->
-    <footer>Temporary Matter — Unit 12, 230 Dalston Lane, London E8 1LA — © 2026</footer>
+      <!-- Right pane: Specs -->
+      <section class="cell" aria-labelledby="exhibition-title-label">
+        <div class="exhibition-title-cell">
+          <h2 class="sec-title-mini" id="exhibition-title-label">Next Exhibition Manifest</h2>
+          <h3 class="exhibition-title" id="exhibition-title">Influx</h3>
+          <span class="exhibition-artist">Dot Als</span>
+        </div>
+        <dl class="meta-list">
+          <div>
+            <dt>Artist</dt>
+            <dd>Dot Als</dd>
+          </div>
+          <div>
+            <dt>On view</dt>
+            <dd>12 — 14 June 2026</dd>
+          </div>
+          <div>
+            <dt>Hours</dt>
+            <dd>1 — 6pm daily</dd>
+          </div>
+          <div>
+            <dt>Address</dt>
+            <dd>Unit 12, 230 Dalston Lane<small>London E8 1LA</small></dd>
+          </div>
+          <div>
+            <dt>Admission</dt>
+            <dd>Free / Open to public</dd>
+          </div>
+        </dl>
+      </section>
+    </main>
+
+    <!-- Contact Block -->
+    <nav class="contact-row" aria-label="Contact Index">
+      <a class="contact-link contact-link-left" href="https://instagram.com/temporary.matter.gallery" target="_blank" rel="noopener">
+        <span>Instagram / @temporary.matter.gallery</span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="contact-link" href="mailto:temporarymattergallery@gmail.com">
+        <span>Email / temporarymattergallery@gmail.com</span>
+        <span class="arrow">↗</span>
+      </a>
+    </nav>
+
+    <!-- Footer / Colophon -->
+    <footer>
+      <span>Temporary Matter — London</span>
+      <span>© 2026 All rights reserved</span>
+    </footer>
   </div>
+
+  <script>
+    function updateGalleryStatus() {
+      const statusDot = document.getElementById('status-dot');
+      const statusText = document.getElementById('status-text');
+      const statusNext = document.getElementById('status-next');
+      const clockElement = document.getElementById('london-clock');
+      
+      const now = new Date();
+      
+      // London clock string format (BST/GMT+1)
+      const londonTimeStr = now.toLocaleTimeString('en-GB', {
+        timeZone: 'Europe/London',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      });
+      
+      if (clockElement) {
+        clockElement.textContent = londonTimeStr + ' GMT+1';
+      }
+      
+      // Curatorial logic for active status:
+      // On view 12 - 14 June 2026, 1:00 PM (13:00) to 6:00 PM (18:00) London Time
+      const londonParts = now.toLocaleString('en-US', {
+        timeZone: 'Europe/London',
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: false
+      }).split(', ');
+      
+      if (londonParts.length >= 2) {
+        const dateParts = londonParts[0].split('/'); // MM/DD/YYYY
+        const timeParts = londonParts[1].split(':'); // HH:MM
+        
+        const year = parseInt(dateParts[2]);
+        const month = parseInt(dateParts[0]);
+        const day = parseInt(dateParts[1]);
+        const hour = parseInt(timeParts[0]);
+        
+        let isOpen = false;
+        if (year === 2026 && month === 6 && (day >= 12 && day <= 14)) {
+          if (hour >= 13 && hour < 18) {
+            isOpen = true;
+          }
+        }
+        
+        let nextOpenStr = '';
+        if (!isOpen) {
+          if (year < 2026 || (year === 2026 && (month < 6 || (month === 6 && (day < 12 || (day === 12 && hour < 13)))))) {
+            nextOpenStr = 'NEXT: 12 JUNE 2026 // 13:00 BST';
+          } else if (year === 2026 && month === 6 && ((day === 12 && hour >= 18) || (day === 13 && hour < 13))) {
+            nextOpenStr = 'NEXT: 13 JUNE 2026 // 13:00 BST';
+          } else if (year === 2026 && month === 6 && ((day === 13 && hour >= 18) || (day === 14 && hour < 13))) {
+            nextOpenStr = 'NEXT: 14 JUNE 2026 // 13:00 BST';
+          } else {
+            nextOpenStr = 'EXHIBITION CONCLUDED';
+          }
+        }
+        
+        if (statusDot && statusText && statusNext) {
+          if (isOpen) {
+            statusDot.classList.add('active');
+            statusText.textContent = 'ACTIVE / ON VIEW NOW';
+            statusNext.textContent = '';
+            statusNext.style.display = 'none';
+          } else {
+            statusDot.classList.remove('active');
+            statusText.textContent = 'INACTIVE / CLOSED';
+            statusNext.textContent = nextOpenStr;
+            statusNext.style.display = 'block';
+          }
+        }
+      }
+    }
+
+    updateGalleryStatus();
+    setInterval(updateGalleryStatus, 1000);
+  </script>
 </body>
 </html>
