@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Temporary Matter</title>
+  <meta name="description" content="Temporary Matter — an artist-run space." />
+  <style>
+    /* Office Code Pro — Nathan Rutzky, SIL Open Font License 1.1 (via open-foundry.com) */
+    @font-face {
+      font-family: "Office Code Pro";
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+      src: url("fonts/OfficeCodePro-Regular.woff2") format("woff2"),
+           url("fonts/OfficeCodePro-Regular.woff") format("woff");
+    }
+    @font-face {
+      font-family: "Office Code Pro";
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+      src: url("fonts/OfficeCodePro-Bold.woff2") format("woff2"),
+           url("fonts/OfficeCodePro-Bold.woff") format("woff");
+    }
+
+    :root {
+      --line: #111;
+      --bg: #fff;
+      --muted: #555;
+      --space: clamp(1.5rem, 4vw, 3rem);
+      --mono: "Office Code Pro", "Courier New", Courier, monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--line);
+      font-family: var(--mono);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: var(--space);
+    }
+
+    header {
+      border: 1px solid var(--line);
+      padding: var(--space);
+      text-align: center;
+      margin-bottom: var(--space);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.8rem, 6vw, 3rem);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .tagline {
+      margin: 1rem 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    section {
+      margin-bottom: var(--space);
+    }
+
+    .label {
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Flyer */
+    .flyer {
+      border: 1px solid var(--line);
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #fafafa;
+    }
+
+    .exhibition-info {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .exhibition-info strong {
+      display: block;
+      font-size: 1.05rem;
+      letter-spacing: 0.03em;
+    }
+
+    .exhibition-info span {
+      color: var(--muted);
+    }
+
+    /* Links */
+    .links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      flex: 1 1 auto;
+      min-width: 140px;
+      text-align: center;
+      border: 1px solid var(--line);
+      padding: 1rem;
+      text-decoration: none;
+      color: var(--line);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .links a:hover,
+    .links a:focus {
+      background: var(--line);
+      color: var(--bg);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Temporary Matter</h1>
+    <p class="tagline">An artist-run space for transient, time-based, and temporary works.</p>
+  </header>
+
+  <section>
+    <p class="label">Upcoming Exhibition</p>
+    <img class="flyer" src="flyer.jpg" alt="Flyer for the upcoming exhibition" />
+    <div class="exhibition-info">
+      <strong>Placeholder Title</strong>
+      <span>Artist Name &middot; Opening 00 Month 2026, 18:00 &middot; On view through 00 Month 2026</span>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Find Us</p>
+    <div class="links">
+      <a href="https://instagram.com/temporarymatter" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:hello@temporarymatter.com">Email</a>
+    </div>
+  </section>
+
+  <footer>
+    Temporary Matter &middot; temporarymatter.com
+  </footer>
+</body>
+</html>
