@@ -78,7 +78,6 @@
     .wrap {
       max-width: 1300px;
       margin: 0 auto;
-      border: 1px solid var(--ink);
       display: grid;
       grid-template-columns: 1fr;
     }
@@ -87,17 +86,16 @@
     .row {
       display: grid;
       grid-template-columns: 1fr;
-      border-bottom: 1px solid var(--ink);
     }
-    
 
+    .grid-3col {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
 
     @media (min-width: 860px) {
-      .row-2col {
-        grid-template-columns: 1.2fr 0.8fr;
-      }
-      .row-header {
-        grid-template-columns: 1.2fr 1fr 0.8fr;
+      .grid-3col {
+        grid-template-columns: 1.5fr 1fr 1fr;
       }
     }
 
@@ -116,17 +114,6 @@
       justify-content: flex-start;
     }
 
-    .cell-left {
-      border-bottom: 1px solid var(--ink);
-    }
-
-    @media (min-width: 860px) {
-      .cell-left {
-        border-right: 1px solid var(--ink);
-        border-bottom: none;
-      }
-    }
-
     /* --- Header / Masthead --- */
     .wordmark-container {
       padding: clamp(1.25rem, 3.5vw, 2.5rem);
@@ -137,9 +124,8 @@
       font-family: var(--display);
       font-weight: 700;
       line-height: 0.88;
-      letter-spacing: -0.05em;
+      letter-spacing: -0.02em; /* Refined optical spacing for mixed case */
       font-size: clamp(2.8rem, 8.2vw, 6.2rem);
-      text-transform: uppercase;
     }
     .wordmark span { display: block; }
 
@@ -232,14 +218,14 @@
     }
 
     .flyer-cell {
-      justify-content: center;
-      align-items: center;
+      justify-content: flex-start;
+      align-items: flex-start;
     }
 
     .flyer {
       display: block;
       width: 100%;
-      max-width: 480px;
+      max-width: 520px; /* Confident display size */
       height: auto;
       border: 1px solid #e0e0d8;
     }
@@ -258,14 +244,12 @@
     dl.meta-list {
       margin: 0;
       padding: 0;
-      border-top: 1px solid var(--ink);
     }
     
     dl.meta-list > div {
       display: grid;
       grid-template-columns: 1fr;
       padding: 0.85rem 0;
-      border-bottom: 1px solid var(--ink);
     }
     
     @media (min-width: 480px) {
@@ -299,18 +283,6 @@
     }
 
     /* --- Contact list --- */
-    .contact-row {
-      display: grid;
-      grid-template-columns: 1fr;
-      border-bottom: 1px solid var(--ink);
-    }
-    
-    @media (min-width: 860px) {
-      .contact-row {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    
     .contact-link {
       display: flex;
       justify-content: space-between;
@@ -320,17 +292,6 @@
       letter-spacing: 0.05em;
       font-weight: 700;
       transition: background 0.1s steps(2), color 0.1s steps(2);
-    }
-
-    .contact-link-left {
-      border-bottom: 1px solid var(--ink);
-    }
-
-    @media (min-width: 860px) {
-      .contact-link-left {
-        border-right: 1px solid var(--ink);
-        border-bottom: none;
-      }
     }
     
     .contact-link:hover {
@@ -364,34 +325,43 @@
       color: var(--paper);
     }
 
-    /* --- Footer --- */
-    footer {
-      padding: 1.5rem clamp(1.25rem, 3.5vw, 2.5rem);
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      color: var(--muted);
+    /* --- Colophon list --- */
+    .colophon-cell {
+      padding: clamp(1.25rem, 3.5vw, 2.5rem);
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 1rem;
+      flex-direction: column;
+      justify-content: flex-start;
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .colophon-cell .colophon-value {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .colophon-cell .colophon-sub {
+      margin-top: 0.25rem;
+      font-size: 0.65rem;
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <!-- Header Block -->
-    <header class="row row-header">
-      <div class="wordmark-container cell-left">
+    <header class="row grid-3col">
+      <div class="wordmark-container">
         <h1 class="wordmark"><span>Temporary</span><span>Matter</span></h1>
       </div>
-      <div class="cell cell-left">
+      <div class="cell">
         <span class="label">Program</span>
         <p class="about-text">Temporary Matter is an artist-run space based in Dalston, London.</p>
       </div>
       <div class="cell masthead-info">
         <div>
           <span class="label">Location</span>
-          <span class="value">Unit 12, 230 Dalston Lane, London E8 1LA</span>
+          <span class="value">Unit 32, 230 Dalston Lane, London E8 1LA</span>
         </div>
         <div>
           <span class="label">Local Time</span>
@@ -409,46 +379,17 @@
     </header>
 
     <!-- Exhibition Block -->
-    <main class="row row-2col">
-      <!-- Left pane: Flyer -->
-      <section class="cell cell-left flyer-cell">
+    <main class="row grid-3col">
+      <!-- Flyer -->
+      <section class="cell flyer-cell" style="grid-column: span 2;">
         <img class="flyer" src="flyer.jpg" alt="Flyer for Dot Als - Influx exhibition" />
       </section>
-
-      <!-- Right pane: Specs -->
-      <section class="cell" aria-labelledby="exhibition-title-label">
-        <div class="exhibition-title-cell">
-          <h2 class="sec-title-mini" id="exhibition-title-label">Next Exhibition</h2>
-          <h3 class="exhibition-title" id="exhibition-title">Influx</h3>
-          <span class="exhibition-artist">Dot Als</span>
-        </div>
-        <dl class="meta-list">
-          <div>
-            <dt>Artist</dt>
-            <dd>Dot Als</dd>
-          </div>
-          <div>
-            <dt>On view</dt>
-            <dd>12 — 14 June 2026</dd>
-          </div>
-          <div>
-            <dt>Hours</dt>
-            <dd>1 — 6pm daily</dd>
-          </div>
-          <div>
-            <dt>Address</dt>
-            <dd>Unit 12, 230 Dalston Lane<small>London E8 1LA</small></dd>
-          </div>
-          <div>
-            <dt>Admission</dt>
-            <dd>Free / Open to public</dd>
-          </div>
-        </dl>
-      </section>
+      <div class="cell spacer-cell"></div>
     </main>
 
-    <nav class="contact-row" aria-label="Contact Index">
-      <a class="contact-link contact-link-left" href="https://instagram.com/temporary.matter.gallery" target="_blank" rel="noopener">
+    <!-- Contact & Colophon Row -->
+    <nav class="row grid-3col" aria-label="Contact Index">
+      <a class="contact-link" href="https://instagram.com/temporary.matter.gallery" target="_blank" rel="noopener">
         <span class="link-content">
           <span class="link-label">Instagram</span>
           <span class="link-value">@temporary.matter.gallery</span>
@@ -462,13 +403,11 @@
         </span>
         <span class="arrow">↗</span>
       </a>
+      <div class="cell colophon-cell">
+        <span class="colophon-value">Temporary Matter — London</span>
+        <span class="colophon-sub">© 2026 All rights reserved</span>
+      </div>
     </nav>
-
-    <!-- Footer / Colophon -->
-    <footer>
-      <span>Temporary Matter — London</span>
-      <span>© 2026 All rights reserved</span>
-    </footer>
   </div>
 
   <script>
@@ -542,7 +481,7 @@
             statusNext.style.display = 'none';
           } else {
             statusDot.classList.remove('active');
-            statusText.textContent = 'Inactive / Closed';
+            statusText.textContent = 'Inactive';
             statusNext.textContent = nextOpenStr;
             statusNext.style.display = 'block';
           }
