@@ -97,6 +97,12 @@
       .grid-3col {
         grid-template-columns: 1.5fr 1fr 1fr;
       }
+      .flyer-cell {
+        grid-column: 1;
+      }
+      .exhibition-text-cell {
+        grid-column: span 2;
+      }
     }
 
     .about-text {
@@ -228,6 +234,27 @@
       max-width: 520px; /* Confident display size */
       height: auto;
       border: 1px solid #e0e0d8;
+    }
+
+    /* Exhibition Body text styling */
+    .exhibition-body {
+      margin-top: 1.5rem;
+    }
+
+    .exhibition-body p {
+      margin: 0 0 1.25rem 0;
+      line-height: 1.6;
+      font-size: 0.85rem;
+      font-weight: 400;
+      max-width: 65ch;
+    }
+
+    .exhibition-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .exhibition-body em {
+      font-style: italic;
     }
 
     .plate figcaption {
@@ -381,10 +408,27 @@
     <!-- Exhibition Block -->
     <main class="row grid-3col">
       <!-- Flyer -->
-      <section class="cell flyer-cell" style="grid-column: span 2;">
-        <img class="flyer" src="flyer.jpg" alt="Flyer for Dot Als - Influx exhibition" />
+      <section class="cell flyer-cell">
+        <img class="flyer" src="flyer.jpg" alt="Flyer for Dot Als - Hard Lights exhibition" />
       </section>
-      <div class="cell spacer-cell"></div>
+      
+      <!-- Exhibition Text -->
+      <article class="cell exhibition-text-cell">
+        <div class="exhibition-title-cell">
+          <h2 class="sec-title-mini">Exhibition</h2>
+          <h3 class="exhibition-title">Hard Lights</h3>
+          <span class="exhibition-artist">Dot Als</span>
+        </div>
+        <div class="exhibition-body">
+          <p>Run fast enough toward the sun and you stop seeing where you are going. You move faster than ever, but the light meant to guide you is the light that blinds you. <em>Hard Lights</em> takes that predicament as its subject. Across three installations, Dot Als looks at the disruption generative AI is forcing onto audiovisual art, then follows it outward: into the art ecosystem that decides what gets seen and valued, and into a society reorganising around a technology it cannot yet steer.</p>
+          <p>The first casualty is value. His audiovisual work is worth less by the day, buried in AI slop, and the same erosion runs through the structures around it: the galleries and listings that legitimise it, the agency we cede to automated systems, the speed at which it all arrives before anyone agrees how to govern it. His answer is to pull the technology out of the screen and into the room, binding each digital element to physical structure that cannot be generated, only made: custom steel, aluminium, solid oak. Light does the connecting, the link in his work between the virtual and the real, here bleeding from industrial lamps into the pixels they light.</p>
+          <p><em>Index of absent spaces</em> sets a small screen on metal, framed so the eye reads it as a painting and lit from below by an industrial lamp; as the lamp brightens, so does the glow at the foot of the image, physical and rendered light moving as one. On screen, a raw red wireframe figure hosts a weekly guide to London's best cultural events: galleries, openings, sound-art nights. None exist. It curates a city that isn't there with total authority, an art ecosystem fabricated wholesale, a study in how readily we follow a machine into rooms that were never built.</p>
+          <p><em>Overdrive</em> is louder. A ribbon of aluminium, three millimetres thick and sixty centimetres long, rises from a custom steel-rod stand set in an oak base, carrying a small screen with a potentiometer beneath it for the viewer to turn: a dial for how hard we push. On screen an AI face grows more convincing by the second, until it is pushed too far and breaks: the screen flares white, and a bang follows. It is about acceleration without governance, the urge to turn everything to maximum before asking what maximum costs a society still finding the controls.</p>
+          <p>Against this stands a relic of slow making. <em>Un rai de feu</em>, a 3D animation and audio work that runs three minutes and took four months to make, is given a body on a vertical screen and aluminium-profile stand. A Roman head, hewn from rock and stretched into a distorted, contemporary typography, becomes a resonator for low frequency, ancient matter made to speak through modern sound. Where such imagery can now be made instantly and forgotten as fast, the piece insists on the worth of friction, labour and time.</p>
+          <p>Dot Als is a self-taught artist from the French Alps, based in London, who came to installation and light through type and image, music production, then CGI and real-time systems. He carries the total-authorship instinct of the underground sound scenes that formed him, where one person makes the entire record, alongside an early proximity to computing through his mother, an early computer scientist. His identity tends to arrive mediated, as an avatar, a processed voice, a CGI double, the name itself; <em>Hard Lights</em> extends the move, a self-portrait made at the edge where his own medium is being rewritten.</p>
+          <p>There is no prescribed route. Dot Als would rather you find your own, lingering on the build, the meaning, or simply the light. What the three works share is a refusal to look away from the sun, and a conviction that the only way through the glare is to make something solid enough to throw a shadow.</p>
+        </div>
+      </article>
     </main>
 
     <!-- Contact & Colophon Row -->
