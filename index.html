@@ -165,13 +165,6 @@
       font-weight: 700;
     }
 
-    .status-group {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
     .status-badge {
       display: inline-flex;
       align-items: center;
@@ -404,14 +397,11 @@
           <span class="value">Fridays and Saturdays 1–6pm</span>
         </div>
         <div>
-          <span class="label">Local Time &amp; Status</span>
-          <div class="status-group">
-            <span class="value" id="london-clock">00:00:00 GMT+1</span>
-            <span class="status-badge">
-              <span class="status-dot" id="status-dot"></span>
-              <span id="status-text">Retrieving Status</span>
-            </span>
-          </div>
+          <span class="label">Status</span>
+          <span class="status-badge">
+            <span class="status-dot" id="status-dot"></span>
+            <span id="status-text">Retrieving Status</span>
+          </span>
           <span class="status-next" id="status-next"></span>
         </div>
       </div>
@@ -473,22 +463,8 @@
       const statusDot = document.getElementById('status-dot');
       const statusText = document.getElementById('status-text');
       const statusNext = document.getElementById('status-next');
-      const clockElement = document.getElementById('london-clock');
       
       const now = new Date();
-      
-      // London clock string format (BST/GMT+1)
-      const londonTimeStr = now.toLocaleTimeString('en-GB', {
-        timeZone: 'Europe/London',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false
-      });
-      
-      if (clockElement) {
-        clockElement.textContent = londonTimeStr + ' GMT+1';
-      }
       
       // Curatorial logic for active status:
       // On view 12 - 14 June 2026, 1:00 PM (13:00) to 6:00 PM (18:00) London Time
