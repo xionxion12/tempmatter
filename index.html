@@ -467,7 +467,7 @@
       const now = new Date();
       
       // Curatorial logic for active status:
-      // On view 12 - 14 June 2026, 1:00 PM (13:00) to 6:00 PM (18:00) London Time
+      // On view 12, 13, 14, 19, 20 June 2026, 1:00 PM (13:00) to 6:00 PM (18:00) London Time
       const londonParts = now.toLocaleString('en-US', {
         timeZone: 'Europe/London',
         year: 'numeric',
@@ -487,23 +487,30 @@
         const day = parseInt(dateParts[1]);
         const hour = parseInt(timeParts[0]);
         
+        const openDays = [12, 13, 14, 19, 20]; // June 2026, 13:00-18:00 BST
+
         let isOpen = false;
-        if (year === 2026 && month === 6 && (day >= 12 && day <= 14)) {
+        if (year === 2026 && month === 6 && openDays.includes(day)) {
           if (hour >= 13 && hour < 18) {
             isOpen = true;
           }
         }
-        
+
         let nextOpenStr = '';
         if (!isOpen) {
-          if (year < 2026 || (year === 2026 && (month < 6 || (month === 6 && (day < 12 || (day === 12 && hour < 13)))))) {
-            nextOpenStr = 'Next: 12 June 2026 // 13:00 BST';
-          } else if (year === 2026 && month === 6 && ((day === 12 && hour >= 18) || (day === 13 && hour < 13))) {
-            nextOpenStr = 'Next: 13 June 2026 // 13:00 BST';
-          } else if (year === 2026 && month === 6 && ((day === 13 && hour >= 18) || (day === 14 && hour < 13))) {
-            nextOpenStr = 'Next: 14 June 2026 // 13:00 BST';
-          } else {
-            nextOpenStr = '';
+          let nextDay = null;
+          if (year < 2026 || (year === 2026 && month < 6)) {
+            nextDay = openDays[0];
+          } else if (year === 2026 && month === 6) {
+            for (const d of openDays) {
+              if (d > day || (d === day && hour < 13)) {
+                nextDay = d;
+                break;
+              }
+            }
+          }
+          if (nextDay !== null) {
+            nextOpenStr = 'Next: ' + nextDay + ' June 2026 // 13:00 BST';
           }
         }
         
