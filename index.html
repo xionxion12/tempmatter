@@ -22,45 +22,50 @@
   <link rel="shortcut icon" href="favicon.ico" />
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;700;900&display=swap');
-
-
-    /* M+ M Type-1 (M+ 1m) — The M+ FONTS PROJECT, free license (via open-foundry.com).
-       Subset to Latin + punctuation/arrows used on this page. */
+    /* TeX Gyre Heros — GUST Font License. See fonts/GUST-FONT-LICENSE.txt
+       (via open-foundry.com / gust.org.pl). Used for all body text and headings. */
     @font-face {
-      font-family: "MPlus M Type-1";
+      font-family: "TeX Gyre Heros";
       font-weight: 400;
       font-style: normal;
       font-display: swap;
-      src: url("fonts/MplusMType1-Regular.woff2") format("woff2"),
-           url("fonts/MplusMType1-Regular.woff") format("woff");
+      src: url("fonts/TeXGyreHeros-Regular.woff2") format("woff2");
     }
     @font-face {
-      font-family: "MPlus M Type-1";
-      font-weight: 500;
-      font-style: normal;
-      font-display: swap;
-      src: url("fonts/MplusMType1-Medium.woff2") format("woff2"),
-           url("fonts/MplusMType1-Medium.woff") format("woff");
-    }
-    @font-face {
-      font-family: "MPlus M Type-1";
+      font-family: "TeX Gyre Heros";
       font-weight: 700;
       font-style: normal;
       font-display: swap;
-      src: url("fonts/MplusMType1-Bold.woff2") format("woff2"),
-           url("fonts/MplusMType1-Bold.woff") format("woff");
+      src: url("fonts/TeXGyreHeros-Bold.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "TeX Gyre Heros";
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+      src: url("fonts/TeXGyreHeros-Italic.woff2") format("woff2");
+    }
+
+    /* Libre Baskerville — SIL Open Font License 1.1. See fonts/LibreBaskerville-OFL.txt
+       Used (bold) for the masthead wordmark. */
+    @font-face {
+      font-family: "Libre Baskerville";
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+      src: url("fonts/LibreBaskerville-Bold.woff2") format("woff2"),
+           url("fonts/LibreBaskerville-Bold.woff") format("woff");
     }
 
     :root {
-      --ink: #070708;
+      --ink: #000000;
       --paper: #ffffff;
-      --muted: #747472;
+      --muted: #000000;
       --hair: #070708;
       --accent: #ff3b30;
-      
-      --mono: "MPlus M Type-1", ui-monospace, "SFMono-Regular", Menlo, "Courier New", monospace;
-      --display: "Archivo", Helvetica, Arial, sans-serif;
+
+      --mono: "TeX Gyre Heros", Helvetica, Arial, sans-serif;
+      --display: "TeX Gyre Heros", Helvetica, Arial, sans-serif;
     }
 
     * { box-sizing: border-box; }
@@ -117,7 +122,7 @@
       margin: 0.5rem 0 0;
       font-size: 0.82rem;
       line-height: 1.55;
-      font-weight: 500;
+      font-weight: 400;
       max-width: 32ch;
     }
 
@@ -135,11 +140,16 @@
 
     .wordmark {
       margin: 0;
-      font-family: var(--display);
+      font-family: "Libre Baskerville", Georgia, serif;
       font-weight: 700;
       line-height: 0.88;
-      letter-spacing: -0.02em; /* Refined optical spacing for mixed case */
-      font-size: clamp(2.8rem, 8.2vw, 6.2rem);
+      letter-spacing: -0.02em;
+      /* 30% smaller than the original display size */
+      font-size: clamp(1.96rem, 5.74vw, 4.34rem);
+      /* vertically stretched to 120% and softened with a gaussian blur */
+      transform: scaleY(1.2);
+      transform-origin: left top;
+      filter: blur(8px);
     }
     .wordmark span { display: block; }
 
@@ -162,36 +172,7 @@
     }
 
     .masthead-info .value {
-      font-weight: 700;
-    }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 700;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--muted);
-      display: inline-block;
-    }
-
-    .status-dot.active {
-      background: var(--accent);
-      box-shadow: 0 0 8px var(--accent);
-    }
-
-    .status-next {
-      display: block;
-      font-size: 0.65rem;
-      color: var(--muted);
-      margin-top: 0.25rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
+      font-weight: 400;
     }
 
     /* --- Exhibition layout --- */
@@ -212,7 +193,7 @@
       margin: 0.85rem 0 0;
       font-family: var(--display);
       font-size: clamp(1.2rem, 2.88vw, 2.1rem);
-      font-weight: 700;
+      font-weight: 400;
       line-height: 0.95;
       letter-spacing: -0.02em;
     }
@@ -221,7 +202,7 @@
       font-family: var(--display);
       font-style: normal;
       color: var(--muted);
-      font-weight: 700;
+      font-weight: 400;
       font-size: clamp(0.95rem, 1.8vw, 1.25rem);
       letter-spacing: 0.02em;
       margin-top: 0.4rem;
@@ -281,20 +262,20 @@
       margin: 0;
       padding: 0;
     }
-    
+
     dl.meta-list > div {
       display: grid;
       grid-template-columns: 1fr;
       padding: 0.85rem 0;
     }
-    
+
     @media (min-width: 480px) {
       dl.meta-list > div {
         grid-template-columns: 8rem 1fr;
         gap: 1.5rem;
       }
     }
-    
+
     dl.meta-list dt {
       font-family: var(--display);
       font-weight: 700;
@@ -302,14 +283,14 @@
       letter-spacing: 0.12em;
       color: var(--muted);
     }
-    
+
     dl.meta-list dd {
       margin: 0;
       font-size: 0.85rem;
       letter-spacing: -0.01em;
-      font-weight: 700;
+      font-weight: 400;
     }
-    
+
     dl.meta-list dd small {
       display: block;
       color: var(--muted);
@@ -325,14 +306,14 @@
       padding: 1.5rem clamp(1.25rem, 3.5vw, 2.5rem);
       font-size: 0.82rem;
       letter-spacing: 0.05em;
-      font-weight: 700;
+      font-weight: 400;
       transition: color 0.1s steps(2);
     }
-    
+
     .contact-link:hover {
       color: var(--accent);
     }
-    
+
     .contact-link .arrow {
       font-size: 1.1rem;
       line-height: 1;
@@ -366,7 +347,7 @@
     }
 
     .colophon-cell .colophon-value {
-      font-weight: 700;
+      font-weight: 400;
       color: var(--ink);
     }
 
@@ -396,14 +377,6 @@
           <span class="label">Public Opening Hours</span>
           <span class="value">Fridays and Saturdays 1–6pm</span>
         </div>
-        <div>
-          <span class="label">Status</span>
-          <span class="status-badge">
-            <span class="status-dot" id="status-dot"></span>
-            <span id="status-text">Retrieving Status</span>
-          </span>
-          <span class="status-next" id="status-next"></span>
-        </div>
       </div>
     </header>
 
@@ -413,7 +386,7 @@
       <section class="cell flyer-cell">
         <img class="flyer" src="flyer.jpg?v=9.1" alt="Flyer for Dot Als - Hard Lights exhibition" />
       </section>
-      
+
       <!-- Exhibition Text -->
       <article class="cell exhibition-text-cell">
         <div class="exhibition-title-cell">
@@ -457,81 +430,5 @@
       </div>
     </nav>
   </div>
-
-  <script>
-    function updateGalleryStatus() {
-      const statusDot = document.getElementById('status-dot');
-      const statusText = document.getElementById('status-text');
-      const statusNext = document.getElementById('status-next');
-      
-      const now = new Date();
-      
-      // Curatorial logic for active status:
-      // On view 12, 13, 14, 19, 20 June 2026, 1:00 PM (13:00) to 6:00 PM (18:00) London Time
-      const londonParts = now.toLocaleString('en-US', {
-        timeZone: 'Europe/London',
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        hour12: false
-      }).split(', ');
-      
-      if (londonParts.length >= 2) {
-        const dateParts = londonParts[0].split('/'); // MM/DD/YYYY
-        const timeParts = londonParts[1].split(':'); // HH:MM
-        
-        const year = parseInt(dateParts[2]);
-        const month = parseInt(dateParts[0]);
-        const day = parseInt(dateParts[1]);
-        const hour = parseInt(timeParts[0]);
-        
-        const openDays = [12, 13, 14, 19, 20]; // June 2026, 13:00-18:00 BST
-
-        let isOpen = false;
-        if (year === 2026 && month === 6 && openDays.includes(day)) {
-          if (hour >= 13 && hour < 18) {
-            isOpen = true;
-          }
-        }
-
-        let nextOpenStr = '';
-        if (!isOpen) {
-          let nextDay = null;
-          if (year < 2026 || (year === 2026 && month < 6)) {
-            nextDay = openDays[0];
-          } else if (year === 2026 && month === 6) {
-            for (const d of openDays) {
-              if (d > day || (d === day && hour < 13)) {
-                nextDay = d;
-                break;
-              }
-            }
-          }
-          if (nextDay !== null) {
-            nextOpenStr = 'Next: ' + nextDay + ' June 2026 // 13:00 BST';
-          }
-        }
-        
-        if (statusDot && statusText && statusNext) {
-          if (isOpen) {
-            statusDot.classList.add('active');
-            statusText.textContent = 'Active / On View Now';
-            statusNext.textContent = '';
-            statusNext.style.display = 'none';
-          } else {
-            statusDot.classList.remove('active');
-            statusText.textContent = 'Inactive';
-            statusNext.textContent = nextOpenStr;
-            statusNext.style.display = 'block';
-          }
-        }
-      }
-    }
-
-    updateGalleryStatus();
-    setInterval(updateGalleryStatus, 1000);
-  </script>
 </body>
 </html>
