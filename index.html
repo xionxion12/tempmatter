@@ -153,6 +153,13 @@
     }
     .wordmark span { display: block; }
 
+    /* 30% larger wordmark on mobile (below the desktop layout breakpoint) */
+    @media (max-width: 859px) {
+      .wordmark {
+        font-size: clamp(2.548rem, 7.462vw, 5.642rem);
+      }
+    }
+
     .masthead-info {
       font-size: 0.72rem;
       letter-spacing: 0.08em;
