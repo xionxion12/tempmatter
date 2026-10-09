@@ -108,7 +108,7 @@
 
     @media (min-width: 860px) {
       .grid-3col {
-        grid-template-columns: 1.5fr 1fr 1fr;
+        grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr);
       }
       .flyer-cell {
         grid-column: 1;
@@ -183,10 +183,6 @@
     }
 
     /* --- Exhibition layout --- */
-    .exhibition-title-cell {
-      padding-bottom: 1.5rem;
-    }
-
     .sec-title-mini {
       margin: 0;
       font-family: var(--display);
@@ -213,8 +209,13 @@
       font-weight: 400;
       font-size: clamp(0.95rem, 1.8vw, 1.25rem);
       letter-spacing: 0.02em;
+      line-height: 1.2;
       margin-top: 0.1rem;
       display: block;
+    }
+
+    .exhibition-artist + .exhibition-artist {
+      margin-top: 0;
     }
 
     .exhibition-dates {
@@ -311,6 +312,10 @@
     }
 
     /* --- Past events (folded) --- */
+    .past {
+      padding-bottom: clamp(1.25rem, 3.5vw, 2.5rem);
+    }
+
     .past-heading {
       padding: clamp(1.25rem, 3.5vw, 2.5rem) clamp(1.25rem, 3.5vw, 2.5rem) 0;
     }
@@ -330,7 +335,8 @@
 
     .past-summary::-webkit-details-marker { display: none; }
 
-    .past-summary:hover {
+    .past-summary:hover,
+    .event-details a:hover {
       color: var(--accent);
     }
 
@@ -339,8 +345,7 @@
     }
 
     .past-toggle {
-      margin-left: auto;
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       line-height: 1;
     }
     .past-toggle::before { content: "+"; }
@@ -477,7 +482,7 @@
         </div>
         <div>
           <span class="label">Public Opening Hours</span>
-          <span class="value">By appointment, or during announced exhibition hours</span>
+          <span class="value">By appointment, or during exhibition hours</span>
         </div>
       </div>
     </header>
@@ -489,32 +494,29 @@
         <img class="flyer" src="flyers/2026-10-frieze-week.jpg" alt="Flyer for Temporary Matter invites, a Frieze week studio presentation with Fidji Lapios, Kaja Stumpf, Katarina Lalic, Elise van den Brand and Dean Khalil" />
       </section>
 
-      <!-- Event Text -->
-      <article class="cell exhibition-text-cell">
-        <div class="exhibition-title-cell">
-          <h2 class="sec-title-mini">Studio Presentation</h2>
-          <h3 class="exhibition-title">Temporary Matter invites</h3>
-          <span class="exhibition-artist">Fidji Lapios</span>
-          <span class="exhibition-artist">Kaja Stumpf</span>
-          <span class="exhibition-artist">Katarina Lalic</span>
-          <span class="exhibition-artist">Elise van den Brand</span>
-          <span class="exhibition-artist">Dean Khalil</span>
-          <span class="exhibition-dates">15–19 October 2026</span>
-        </div>
-        <div class="exhibition-body">
-          <p>A Frieze week studio presentation.</p>
-          <dl class="meta-list">
-            <div>
-              <dt>Private View</dt>
-              <dd>Thursday 15 October, 6:30–9pm</dd>
-            </div>
-            <div>
-              <dt>Visits</dt>
-              <dd>By appointment, 15–19 October<small><a href="mailto:contact@temporarymatter.com">contact@temporarymatter.com</a></small></dd>
-            </div>
-          </dl>
-        </div>
+      <!-- Event Title -->
+      <article class="cell exhibition-title-cell">
+        <h2 class="sec-title-mini">Frieze Week Studio Presentation</h2>
+        <h3 class="exhibition-title">Temporary Matter invites</h3>
+        <span class="exhibition-artist">Fidji Lapios</span>
+        <span class="exhibition-artist">Kaja Stumpf</span>
+        <span class="exhibition-artist">Katarina Lalic</span>
+        <span class="exhibition-artist">Elise van den Brand</span>
+        <span class="exhibition-artist">Dean Khalil</span>
+        <span class="exhibition-dates">15–19 October 2026</span>
       </article>
+
+      <!-- Event Details -->
+      <div class="cell masthead-info event-details">
+        <div>
+          <span class="label">Private View</span>
+          <span class="value">Thursday 15 October, 6:30–&#8288;9pm</span>
+        </div>
+        <div>
+          <span class="label">Visits</span>
+          <span class="value">By appointment, 15–19 October<br /><a href="mailto:contact@temporarymatter.com">contact@<wbr />temporarymatter.com</a></span>
+        </div>
+      </div>
     </main>
 
     <!-- Past Events Block -->
