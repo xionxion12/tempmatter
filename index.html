@@ -10,7 +10,7 @@
   <meta property="og:description" content="Temporary Matter is an artist-run space based in Hackney, London." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://temporarymatter.com" />
-  <meta property="og:image" content="https://temporarymatter.com/flyer.jpg" />
+  <meta property="og:image" content="https://temporarymatter.com/flyers/2026-10-frieze-week.jpg" />
   <meta name="theme-color" content="#ffffff" />
 
   <!-- Favicons -->
@@ -310,6 +310,46 @@
       margin-left: 0.4rem;
     }
 
+    /* --- Past events (folded) --- */
+    .past-heading {
+      padding: clamp(1.25rem, 3.5vw, 2.5rem) clamp(1.25rem, 3.5vw, 2.5rem) 0;
+    }
+
+    .past-summary {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.6rem;
+      padding: 0.85rem clamp(1.25rem, 3.5vw, 2.5rem);
+      font-size: 0.85rem;
+      line-height: 1.4;
+      cursor: pointer;
+      list-style: none;
+      transition: color 0.1s steps(2);
+    }
+
+    .past-summary::-webkit-details-marker { display: none; }
+
+    .past-summary:hover {
+      color: var(--accent);
+    }
+
+    .past-title {
+      font-weight: 700;
+    }
+
+    .past-toggle {
+      margin-left: auto;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+    .past-toggle::before { content: "+"; }
+    .past-item[open] .past-toggle::before { content: "\2212"; }
+
+    .past-item .exhibition-body {
+      margin-top: 0;
+    }
+
     .plate figcaption {
       margin: 0.75rem 0 0;
       font-size: 0.65rem;
@@ -437,67 +477,104 @@
         </div>
         <div>
           <span class="label">Public Opening Hours</span>
-          <span class="value">Fridays and Saturdays 1–6pm during exhibition period, or by appointment</span>
+          <span class="value">By appointment, or during announced exhibition hours</span>
         </div>
       </div>
     </header>
 
-    <!-- Exhibition Block -->
+    <!-- Current Event Block -->
     <main class="row grid-3col">
       <!-- Flyer -->
       <section class="cell flyer-cell">
-        <img class="flyer" src="flyer.jpg?v=9.1" alt="Flyer for Dot Als - Hard Lights exhibition" />
+        <img class="flyer" src="flyers/2026-10-frieze-week.jpg" alt="Flyer for Temporary Matter invites, a Frieze week studio presentation with Fidji Lapios, Kaja Stumpf, Katarina Lalic, Elise van den Brand and Dean Khalil" />
       </section>
 
-      <!-- Exhibition Text -->
+      <!-- Event Text -->
       <article class="cell exhibition-text-cell">
         <div class="exhibition-title-cell">
-          <h2 class="sec-title-mini">Exhibition</h2>
-          <h3 class="exhibition-title">Hard Lights</h3>
-          <span class="exhibition-artist">Dot Als</span>
-          <span class="exhibition-dates">12–20 June 2026</span>
+          <h2 class="sec-title-mini">Studio Presentation</h2>
+          <h3 class="exhibition-title">Temporary Matter invites</h3>
+          <span class="exhibition-artist">Fidji Lapios</span>
+          <span class="exhibition-artist">Kaja Stumpf</span>
+          <span class="exhibition-artist">Katarina Lalic</span>
+          <span class="exhibition-artist">Elise van den Brand</span>
+          <span class="exhibition-artist">Dean Khalil</span>
+          <span class="exhibition-dates">15–19 October 2026</span>
         </div>
         <div class="exhibition-body">
-          <p>Run fast enough toward the sun and you stop seeing where you are going. You move faster than ever, but the light meant to guide you is the light that blinds you. <em>Hard Lights</em> takes that predicament as its subject. Across three installations, Dot Als looks at the disruption generative AI is forcing onto audiovisual art, then follows it outward: into the art ecosystem that decides what gets seen and valued, and into a society reorganising around a technology it cannot yet steer.</p>
-          <p>The first casualty is value. His audiovisual work is worth less by the day, buried in AI slop, and the same erosion runs through the structures around it: the galleries and listings that legitimise it, the agency we relinquish to automated systems, the speed at which it all arrives before anyone agrees how to govern it. Dot Als’ answer is to pull the technology out of the screen and into the room, binding each digital element to a physical structure that cannot be generated, only made: custom steel, aluminium, solid oak, electronic components. Light does the connecting, the link in his work between the virtual and the real, here bleeding from industrial lamps into the pixels they light.</p>
-          <p><em>Index of absent spaces</em> sets a small screen on metal, framed so the eye reads it as a painting and lit from below by an industrial lamp; as the lamp brightens, so does the glow at the foot of the image, physical and rendered light moving as one. On screen, a raw red wireframe figure hosts a weekly guide to London's best cultural events: galleries, openings, sound-art nights. None exist. It curates a city that isn't there with total authority, an art ecosystem fabricated wholesale, a study in how readily we follow a machine into rooms that were never built.</p>
-          <p><em>Overdrive</em> is louder. A ribbon of aluminium, three millimetres thick and sixty centimetres long, rises from a custom steel-rod stand set in an oak base, carrying a small screen with a potentiometer beneath it for the viewer to turn: a dial for how hard we push. On screen, a synthetic generation escalates in intensity alongside the viewer’s input, building a visual tension that abruptly fractures as the system reaches its breaking point. It is about acceleration without governance, the urge to turn everything to maximum before asking what maximum costs a society still finding the controls.</p>
-          <p>Against this stands a relic of slow making. <em>Un rai de feu</em>, a 3D animation and audio work that runs three minutes and took four months to make, is given a body on a vertical screen and aluminium-profile stand. A Roman head, hewn from rock and stretched into a distorted, contemporary typography, becomes a resonator for low frequency, ancient matter made to speak through modern sound. Where such imagery can now be made instantly and forgotten as fast, the piece insists on the worth of friction, labour and time.</p>
-          <p>The works invite an open, intuitive engagement. What the three installations share is a refusal to look away from the sun, and a conviction that the only way through the glare is to make something solid enough to throw a shadow.</p>
-          <h4 class="sec-title-mini exhibition-bio-title">Artist</h4>
-          <p>Dot Als is a French artist based in London, working across sound, sculpture, installation, 3D and light. He builds each work himself, from composition through to fabrication, so that the breadth of the practice and its single authorship are inseparable.</p>
-          <p>Born in French Alps, Dot Als was formed by the underground electronic music scenes he came up in, carrying their do-it-yourself ethos and aesthetics into the gallery; a childhood around his mother, an early computer scientist, left a quieter inheritance, though his way into art was always aesthetic before it was technical. Light runs through the work, which holds to the seam between the physical and the virtual, and between the old and the new, setting weathered, hand-made matter against cleaner, synthetic surfaces and asking what each gains and loses in the meeting. Recent presentations include Purist Gallery, London; Van Abbehuis, Eindhoven; and Lowlowland Art Space, Guangzhou, alongside live performances in places like Deptford Hall &amp; Avalon Cafe, London.</p>
-          <h4 class="sec-title-mini exhibition-bio-title">Press</h4>
-          <ul class="press-list">
-            <li>
-              <a href="https://www.ofluxo.net/hard-lights-dot-als-temporary-matter-london/" target="_blank" rel="noopener">
-                <span class="press-source">O Fluxo<span class="arrow">↗</span></span>
-              </a>
-            </li>
-            <li>
-              <a href="https://kubaparis.com/submission/590196" target="_blank" rel="noopener">
-                <span class="press-source">KubaParis<span class="arrow">↗</span></span>
-              </a>
-            </li>
-            <li>
-              <a href="https://saliva.live/exhibitions/86e54aca" target="_blank" rel="noopener">
-                <span class="press-source">Saliva<span class="arrow">↗</span></span>
-              </a>
-            </li>
-            <li>
-              <a href="https://pai32.com/2026/06/19/hard-lights-by-artist-dot-als-2/" target="_blank" rel="noopener">
-                <span class="press-source">PAI32<span class="arrow">↗</span></span>
-              </a>
-            </li>
-            <li>
-              <a href="https://daily-lazy.com/2026/06/dot-als-at-temporary-matter-london.html" target="_blank" rel="noopener">
-                <span class="press-source">Daily Lazy<span class="arrow">↗</span></span>
-              </a>
-            </li>
-          </ul>
+          <p>A Frieze week studio presentation.</p>
+          <dl class="meta-list">
+            <div>
+              <dt>Private View</dt>
+              <dd>Thursday 15 October, 6:30–9pm</dd>
+            </div>
+            <div>
+              <dt>Visits</dt>
+              <dd>By appointment, 15–19 October<small><a href="mailto:contact@temporarymatter.com">contact@temporarymatter.com</a></small></dd>
+            </div>
+          </dl>
         </div>
       </article>
     </main>
+
+    <!-- Past Events Block -->
+    <section class="past" aria-labelledby="past-heading">
+      <h2 class="sec-title-mini past-heading" id="past-heading">Past</h2>
+      <details class="past-item" id="hard-lights">
+        <summary class="past-summary">
+          <span class="past-title">Hard Lights</span>
+          <span class="past-artist">Dot Als</span>
+          <span class="past-dates">12–20 June 2026</span>
+          <span class="past-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="row grid-3col">
+          <div class="cell flyer-cell">
+            <img class="flyer" src="flyers/2026-06-hard-lights.jpg" loading="lazy" alt="Flyer for Dot Als - Hard Lights exhibition" />
+          </div>
+          <article class="cell exhibition-text-cell">
+            <div class="exhibition-body">
+              <p>Run fast enough toward the sun and you stop seeing where you are going. You move faster than ever, but the light meant to guide you is the light that blinds you. <em>Hard Lights</em> takes that predicament as its subject. Across three installations, Dot Als looks at the disruption generative AI is forcing onto audiovisual art, then follows it outward: into the art ecosystem that decides what gets seen and valued, and into a society reorganising around a technology it cannot yet steer.</p>
+              <p>The first casualty is value. His audiovisual work is worth less by the day, buried in AI slop, and the same erosion runs through the structures around it: the galleries and listings that legitimise it, the agency we relinquish to automated systems, the speed at which it all arrives before anyone agrees how to govern it. Dot Als’ answer is to pull the technology out of the screen and into the room, binding each digital element to a physical structure that cannot be generated, only made: custom steel, aluminium, solid oak, electronic components. Light does the connecting, the link in his work between the virtual and the real, here bleeding from industrial lamps into the pixels they light.</p>
+              <p><em>Index of absent spaces</em> sets a small screen on metal, framed so the eye reads it as a painting and lit from below by an industrial lamp; as the lamp brightens, so does the glow at the foot of the image, physical and rendered light moving as one. On screen, a raw red wireframe figure hosts a weekly guide to London's best cultural events: galleries, openings, sound-art nights. None exist. It curates a city that isn't there with total authority, an art ecosystem fabricated wholesale, a study in how readily we follow a machine into rooms that were never built.</p>
+              <p><em>Overdrive</em> is louder. A ribbon of aluminium, three millimetres thick and sixty centimetres long, rises from a custom steel-rod stand set in an oak base, carrying a small screen with a potentiometer beneath it for the viewer to turn: a dial for how hard we push. On screen, a synthetic generation escalates in intensity alongside the viewer’s input, building a visual tension that abruptly fractures as the system reaches its breaking point. It is about acceleration without governance, the urge to turn everything to maximum before asking what maximum costs a society still finding the controls.</p>
+              <p>Against this stands a relic of slow making. <em>Un rai de feu</em>, a 3D animation and audio work that runs three minutes and took four months to make, is given a body on a vertical screen and aluminium-profile stand. A Roman head, hewn from rock and stretched into a distorted, contemporary typography, becomes a resonator for low frequency, ancient matter made to speak through modern sound. Where such imagery can now be made instantly and forgotten as fast, the piece insists on the worth of friction, labour and time.</p>
+              <p>The works invite an open, intuitive engagement. What the three installations share is a refusal to look away from the sun, and a conviction that the only way through the glare is to make something solid enough to throw a shadow.</p>
+              <h4 class="sec-title-mini exhibition-bio-title">Artist</h4>
+              <p>Dot Als is a French artist based in London, working across sound, sculpture, installation, 3D and light. He builds each work himself, from composition through to fabrication, so that the breadth of the practice and its single authorship are inseparable.</p>
+              <p>Born in French Alps, Dot Als was formed by the underground electronic music scenes he came up in, carrying their do-it-yourself ethos and aesthetics into the gallery; a childhood around his mother, an early computer scientist, left a quieter inheritance, though his way into art was always aesthetic before it was technical. Light runs through the work, which holds to the seam between the physical and the virtual, and between the old and the new, setting weathered, hand-made matter against cleaner, synthetic surfaces and asking what each gains and loses in the meeting. Recent presentations include Purist Gallery, London; Van Abbehuis, Eindhoven; and Lowlowland Art Space, Guangzhou, alongside live performances in places like Deptford Hall &amp; Avalon Cafe, London.</p>
+              <h4 class="sec-title-mini exhibition-bio-title">Press</h4>
+              <ul class="press-list">
+                <li>
+                  <a href="https://www.ofluxo.net/hard-lights-dot-als-temporary-matter-london/" target="_blank" rel="noopener">
+                    <span class="press-source">O Fluxo<span class="arrow">↗</span></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://kubaparis.com/submission/590196" target="_blank" rel="noopener">
+                    <span class="press-source">KubaParis<span class="arrow">↗</span></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://saliva.live/exhibitions/86e54aca" target="_blank" rel="noopener">
+                    <span class="press-source">Saliva<span class="arrow">↗</span></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://pai32.com/2026/06/19/hard-lights-by-artist-dot-als-2/" target="_blank" rel="noopener">
+                    <span class="press-source">PAI32<span class="arrow">↗</span></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://daily-lazy.com/2026/06/dot-als-at-temporary-matter-london.html" target="_blank" rel="noopener">
+                    <span class="press-source">Daily Lazy<span class="arrow">↗</span></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </details>
+    </section>
 
     <!-- Contact & Colophon Row -->
     <nav class="row grid-3col" aria-label="Contact Index">
@@ -521,5 +598,15 @@
       </div>
     </nav>
   </div>
+
+  <script>
+    /* Unfold a past event when linked directly, e.g. temporarymatter.com/#hard-lights */
+    function openLinkedPastEvent() {
+      var target = location.hash && document.getElementById(location.hash.slice(1));
+      if (target && target.tagName === "DETAILS") target.open = true;
+    }
+    openLinkedPastEvent();
+    window.addEventListener("hashchange", openLinkedPastEvent);
+  </script>
 </body>
 </html>
